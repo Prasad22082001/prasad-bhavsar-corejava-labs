@@ -1,0 +1,105 @@
+Q1. db.restaurants.find()
+
+Q2. db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1 })
+
+Q3. db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, cuisine: 1, _id: 0 })
+
+Q4. db.restaurants.find({}, { restaurant_id: 1, name: 1, borough: 1, address: 1, _id: 0 })
+
+Q5. db.restaurants.find({ borough: "Bronx" })
+
+Q6. db.restaurants.find({ borough: "Bronx" }).limit(5)
+
+Q7. db.restaurants.find({ borough: "Bronx" }).skip(5).limit(5)
+
+Q8. db.restaurants.find({ grades: { $elemMatch: { score: { $gt: 90 } } } })
+
+Q9. db.restaurants.find({ grades: { $elemMatch: { score: { $gt: 80, $lt: 100 } } } })
+
+Q10. db.restaurants.find({ "address.coord.1": { $lt: -95.754168 } })
+
+Q11. db.restaurants.find({
+  cuisine: { $ne: "American " },
+  grades: { $elemMatch: { score: { $gt: 70 } } },
+  "address.coord.0": { $lt: -65.754168 }
+})
+
+Q12. db.restaurants.find({
+  cuisine: { $ne: "American " },
+  grades: { $elemMatch: { score: { $gt: 70 } } },
+  "address.coord.0": { $lt: -65.754168 }
+})
+
+Q13. db.restaurants.find({
+  cuisine: { $ne: "American " },
+  borough: { $ne: "Brooklyn" },
+  grades: { $elemMatch: { grade: "A" } }
+}).sort({ cuisine: -1 })
+
+Q14. db.restaurants.find({ name: { $regex: /^Wil/ } })
+
+Q15. db.restaurants.find({ name: { $regex: /ces$/ } })
+
+Q16. db.restaurants.find({ name: { $regex: /Reg/ } })
+
+Q17. db.restaurants.find({
+  borough: "Bronx",
+  cuisine: { $in: ["American ", "Chinese"] }
+})
+
+Q18. db.restaurants.find({
+  borough: { $in: ["Staten Island", "Queens", "Bronx", "Brooklyn"] }
+})
+
+Q19. db.restaurants.find({
+  borough: { $nin: ["Staten Island", "Queens", "Bronx", "Brooklyn"] }
+})
+
+Q20. db.restaurants.find({
+  grades: { $elemMatch: { score: { $lte: 10 } } }
+})
+
+Q21. db.restaurants.find({
+  $or: [
+    { cuisine: { $nin: ["American ", "Chinese"] } },
+    { name: { $regex: /^Wil/ } }
+  ]
+})
+
+Q22. db.restaurants.find({
+  grades: {
+    $elemMatch: {
+      grade: "A",
+      score: 11,
+      date: ISODate("2014-08-11T00:00:00Z")
+    }
+  }
+})
+
+Q23. db.restaurants.find({
+  "grades.1.grade": "A",
+  "grades.1.score": 9,
+  "grades.1.date": ISODate("2014-08-11T00:00:00Z")
+})
+
+Q24. db.restaurants.find({
+  "address.coord.1": { $gt: 42, $lte: 52 }
+})
+
+Q25. db.restaurants.find().sort({ name: 1 })
+
+Q26. db.restaurants.find().sort({ name: -1 })
+
+Q27. db.restaurants.find().sort({ cuisine: 1, borough: -1 })
+
+Q28. db.restaurants.find({ "address.street": { $exists: true } })
+
+Q29. db.restaurants.find({ "address.coord": { $type: "double" } })
+
+Q30. db.restaurants.find({
+  grades: { $elemMatch: { score: { $mod: [7, 0] } } }
+})
+
+Q31. db.restaurants.find({ name: { $regex: /mon/i } })
+
+Q32. db.restaurants.find({ name: { $regex: /^Mad/ } })
